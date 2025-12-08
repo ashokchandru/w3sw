@@ -1,54 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>W3SW Developer Tools Studio</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Writer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .skill-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .intro {
+            padding: 2rem;
+            background: #f7fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .projects {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1a202c;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 0.5rem auto 0;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+            flex: 1;
+            margin-left: 1rem;
+        }
+
+        .project-description {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-highlights {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .project-highlights h4 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-highlights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-highlights li {
+            padding: 0.25rem 0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            .project-title {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>W3SW Webtools Accelerator</h1>
-    <p>Simple, fast, privacy-friendly tools for documentation, API testing, and AI-powered search.</p>
-    <nav>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <div class="container">
+        <header>
+            <h1>Technical Writer Portfolio</h1>
+            <p class="tagline">Specialized in API Documentation & Developer Experience</p>
+            <div class="skills">
+                <span class="skill-badge">📝 Technical Writing</span>
+                <span class="skill-badge">🔌 API Documentation</span>
+                <span class="skill-badge">🔀 Git Workflows</span>
+                <span class="skill-badge">📚 Developer Docs</span>
+                <span class="skill-badge">🎯 User-Centric Content</span>
+            </div>
+        </header>
 
-  <section class="hero">
-    <h2>We Build Lightweight Tools for the Web</h2>
-    <p>Independent, fast, and built with care.</p>
- 
-  </section>
-   <section class="features">
-    <div class="card">
-      <h3>XP2 — Documentation Platform</h3>
-      <p>Developer documentation portal - built using Markdown.</p>
-      <a href="https://xp2.org" target="_blank">Visit →</a>
+        <section class="intro">
+            <p>
+                I create clear, comprehensive documentation that empowers developers and technical teams. 
+                My expertise spans API reference documentation, integration guides, and establishing 
+                docs-as-code workflows using Git and modern documentation platforms. I believe great 
+                documentation is the bridge between complex technology and successful implementation.
+            </p>
+        </section>
+
+        <section class="projects">
+            <h2 class="section-title">Featured Documentation Projects</h2>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-number">1</div>
+                    <div>
+                        <h3 class="project-title">XP2.org</h3>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Comprehensive technical documentation project showcasing API reference materials, 
+                    developer guides, and implementation examples. Managed documentation lifecycle using 
+                    Git-based workflows with version control and collaborative review processes.
+                </p>
+                <div class="project-highlights">
+                    <h4>Documentation Highlights</h4>
+                    <ul>
+                        <li>RESTful API endpoint documentation with request/response examples</li>
+                        <li>Git-based docs-as-code workflow with branching strategy</li>
+                        <li>Interactive code samples across multiple programming languages</li>
+                        <li>Clear authentication and error handling documentation</li>
+                    </ul>
+                </div>
+                <a href="https://xp2.org" class="project-link">View Documentation →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-number">2</div>
+                    <div>
+                        <h3 class="project-title">AUCS.net - Kong Gateway Dashboard</h3>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Interactive API management dashboard for Kong Gateway, an open-source API gateway platform. 
+                    Developed comprehensive technical documentation for API testing, route configuration, service 
+                    management, and real-time monitoring features with auto-save functionality and data persistence.
+                </p>
+                <div class="project-highlights">
+                    <h4>Documentation Highlights</h4>
+                    <ul>
+                        <li>User interface documentation for API gateway configuration and service management</li>
+                        <li>Step-by-step guides for adding routes, testing endpoints, and managing microservices</li>
+                        <li>Technical documentation on auto-save features, data export, and backup processes</li>
+                        <li>API testing workflow documentation with examples using JSONPlaceholder, GitHub API, and Dog API</li>
+                    </ul>
+                </div>
+                <a href="https://aucs.net" class="project-link">View Documentation →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-number">3</div>
+                    <div>
+                        <h3 class="project-title">RestAPI.design</h3>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Comprehensive REST API design reference guide covering architectural patterns, best practices, 
+                    and implementation standards. Created extensive technical documentation on HTTP methods, URI 
+                    patterns, security, versioning strategies, and performance optimization for building modern RESTful APIs.
+                </p>
+                <div class="project-highlights">
+                    <h4>Documentation Highlights</h4>
+                    <ul>
+                        <li>Complete guide covering REST fundamentals, HTTP methods, and resource-oriented design</li>
+                        <li>Detailed documentation on API security, authentication, and authorization patterns</li>
+                        <li>Real-world implementation examples with request/response formats and error handling</li>
+                        <li>Advanced topics including HATEOAS, webhooks, batch operations, and idempotency patterns</li>
+                    </ul>
+                </div>
+                <a href="https://restapi.design" class="project-link">View Documentation →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-number">4</div>
+                    <div>
+                        <h3 class="project-title">Q2Q.org - API Response Explorer</h3>
+                    </div>
+                </div>
+                <p class="project-description">
+                    Interactive API testing tool for inspecting and analyzing public API responses. Created 
+                    user-focused documentation for developers to test GET endpoints, examine JSON payloads, 
+                    view HTTP headers, analyze status codes, and measure response performance in real-time.
+                </p>
+                <div class="project-highlights">
+                    <h4>Documentation Highlights</h4>
+                    <ul>
+                        <li>Clear instructional content for API endpoint testing and response inspection</li>
+                        <li>Documentation on JSON formatting, raw response analysis, and header examination</li>
+                        <li>User guides for performance testing and response time measurement</li>
+                        <li>Developer-friendly interface documentation with focus on debugging and API exploration</li>
+                    </ul>
+                </div>
+                <a href="https://q2q.org" class="project-link">View Documentation →</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Ready to collaborate on your documentation needs? Let's create exceptional developer experiences together.</p>
+        </footer>
     </div>
-
-    <div class="card">
-      <h3>AUCS — API Testing Portal</h3>
-      <p>Simple, privacy-friendly API testing. No logs. No backend.</p>
-      <a href="https://aucs.net" target="_blank">Visit →</a>
-    </div>
-
-    <div class="card">
-      <h3>AI Search Tool</h3>
-      <p>Strapi + LLM powered natural-language search (coming soon).</p>
-      <a href="products.html">Learn More →</a>
-    </div>
-
-    <div class="card">
-      <h3>API Explorer</h3>
-      <p>A simple HTML site to view and parse your API responses.</p>
-      <a href="products.html">Learn More →</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 W3SW</p>
-  </footer>
 </body>
 </html>
