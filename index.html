@@ -1,361 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashok Kumar Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ashok – API-First Webtools</title>
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
+<style>
+:root {
+  --bg: #0b0f14;
+  --panel: #121826;
+  --tile: #161c2d;
+  --border: #222a3f;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: linear-gradient(135deg,#6366f1,#8b5cf6);
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
+* { box-sizing: border-box; margin:0; padding:0; }
 
-        header {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
 
-        .tagline {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
+/* ---------- Header ---------- */
 
-        .skills {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+header {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
 
-        .skill-badge {
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
+header h1 {
+  font-size: 2.6rem;
+  margin-bottom: .5rem;
+}
 
-        .intro {
-            padding: 2rem;
-            background: #f7fafc;
-            border-bottom: 1px solid #e2e8f0;
-        }
+.tagline {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
 
-        .intro p {
-            font-size: 1.1rem;
-            color: #4a5568;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: center;
+}
 
-        .projects {
-            padding: 2rem;
-        }
+.skill-badge {
+  background: #1f2937;
+  border: 1px solid var(--border);
+  padding: .4rem .9rem;
+  border-radius: 999px;
+  font-size: .85rem;
+}
 
-        .section-title {
-            font-size: 2rem;
-            color: #1a202c;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-        }
+/* ---------- Intro ---------- */
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            margin: 0.5rem auto 0;
-        }
+.intro {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  color: var(--muted);
+}
 
-        .project-card {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
+/* ---------- Tiles ---------- */
 
-        .project-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
-            transform: translateY(-2px);
-        }
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
 
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-        }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
 
-        .project-number {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
+.tile {
+  background: var(--tile);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, border .25s ease;
+}
 
-        .project-title {
-            font-size: 1.5rem;
-            color: #1a202c;
-            margin-bottom: 0.5rem;
-            flex: 1;
-            margin-left: 1rem;
-        }
+.tile:hover {
+  transform: translateY(-6px);
+  border-color: #4f46e5;
+}
 
-        .project-description {
-            color: #4a5568;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
+.tile-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
 
-        .project-highlights {
-            background: #f7fafc;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
+.tile-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
 
-        .project-highlights h4 {
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+.tile h3 {
+  font-size: 1.2rem;
+}
 
-        .project-highlights ul {
-            list-style: none;
-            padding-left: 0;
-        }
+.tile p {
+  color: var(--muted);
+  font-size: .95rem;
+  margin: .75rem 0 1rem;
+}
 
-        .project-highlights li {
-            padding: 0.25rem 0;
-            color: #4a5568;
-            position: relative;
-            padding-left: 1.5rem;
-        }
+.tile ul {
+  list-style: none;
+  margin-bottom: 1.2rem;
+}
 
-        .project-highlights li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
+.tile li {
+  font-size: .9rem;
+  color: #c7d2fe;
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: .4rem;
+}
 
-        .project-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
+.tile li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #818cf8;
+}
 
-        .project-link:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
+.tile a {
+  margin-top: auto;
+  text-decoration: none;
+  background: var(--accent);
+  color: white;
+  padding: .65rem 1rem;
+  border-radius: 10px;
+  font-size: .9rem;
+  width: fit-content;
+}
 
-        footer {
-            background: #1a202c;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
+/* ---------- Footer ---------- */
 
-        footer p {
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .tagline {
-                font-size: 1rem;
-            }
-
-            .project-header {
-                flex-direction: column;
-            }
-
-            .project-title {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
-        }
-    </style>
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  color: var(--muted);
+  font-size: .9rem;
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>Ashok's API-First Webtools</h1>
-            <p class="tagline">Specialized in API Documentation & Developer Experience</p>
-            <div class="skills">
-                <span class="skill-badge">📝 Technical Writing</span>
-                <span class="skill-badge">🔌 API Documentation</span>
-                <span class="skill-badge">🔀 Git Workflows</span>
-                <span class="skill-badge">📚 Developer Docs</span>
-                <span class="skill-badge">🎯 User-Centric Content</span>
-            </div>
-        </header>
+<div class="container">
 
-        <section class="intro">
-            <p>
-                I create clear, comprehensive documentation that empowers developers and technical teams. 
-                My expertise spans API reference documentation, integration guides, and establishing 
-                docs-as-code workflows using Git and modern documentation platforms. I believe great 
-                documentation is the bridge between complex technology and successful implementation.
-            </p>
-        </section>
+<header>
+  <h1>Ashok's API-First Webtools</h1>
+  <p class="tagline">API Documentation · Developer Experience · Docs-as-Code</p>
+  <div class="skills">
+    <span class="skill-badge">📝 Technical Writing</span>
+    <span class="skill-badge">🔌 API Docs</span>
+    <span class="skill-badge">🔀 Git Workflows</span>
+    <span class="skill-badge">📚 Dev Portals</span>
+    <span class="skill-badge">🎯 DX Focus</span>
+  </div>
+</header>
 
-        <section class="projects">
-            <h2 class="section-title">Featured Documentation Projects</h2>
+<section class="intro">
+  I build clear, scalable developer documentation systems—API references,
+  guides, and docs-as-code workflows that reduce friction between APIs and developers.
+</section>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">1</div>
-                    <div>
-                        <h3 class="project-title">XP2.org</h3>
-                    </div>
-                </div>
-                <p class="project-description">
-                    A complete developer documentation portal showcasing API reference materials, 
-                    developer documentation, and technical documentation. Managed documentation lifecycle using 
-                    Git-based workflows with version control and collaborative review processes. Site is created
-                    in Markdown with MkDocs
-                </p>
-                <div class="project-highlights">
-                    <h4>Documentation Highlights</h4>
-                    <ul>
-                        <li>RESTful API endpoint documentation with request/response examples</li>
-                        <li>Git-based docs-as-code workflow with branching strategy</li>
-                        <li>Interactive code samples across multiple programming languages</li>
-                        <li>Clear authentication and error handling documentation</li>
-                    </ul>
-                </div>
-                <a href="https://xp2.org" class="project-link">Visit Website →</a>
-            </div>
+<h2 class="section-title">Featured Projects</h2>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">2</div>
-                    <div>
-                        <h3 class="project-title">AUCS.net - Kong Gateway Dashboard</h3>
-                    </div>
-                </div>
-                <p class="project-description">
-                    Interactive API management dashboard for Kong Gateway, an open-source API gateway platform. 
-                    Developed comprehensive technical documentation for API testing, route configuration, service 
-                    management, and real-time monitoring features with auto-save functionality and data persistence.
-                </p>
-                <div class="project-highlights">
-                    <h4>Documentation Highlights</h4>
-                    <ul>
-                        <li>User interface documentation for API gateway configuration and service management</li>
-                        <li>Step-by-step guides for adding routes, testing endpoints, and managing microservices</li>
-                        <li>Technical documentation on auto-save features, data export, and backup processes</li>
-                        <li>API testing workflow documentation with examples using JSONPlaceholder, GitHub API, and Dog API</li>
-                    </ul>
-                </div>
-                <a href="https://aucs.net" class="project-link">Visit Website →</a>
-            </div>
+<section class="grid">
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">3</div>
-                    <div>
-                        <h3 class="project-title">RestAPI.design</h3>
-                    </div>
-                </div>
-                <p class="project-description">
-                    Comprehensive REST API design reference guide covering architectural patterns, best practices, 
-                    and implementation standards. Created extensive technical documentation on HTTP methods, URI 
-                    patterns, security, versioning strategies, and performance optimization for building modern RESTful APIs.
-                </p>
-                <div class="project-highlights">
-                    <h4>Documentation Highlights</h4>
-                    <ul>
-                        <li>Complete guide covering REST fundamentals, HTTP methods, and resource-oriented design</li>
-                        <li>Detailed documentation on API security, authentication, and authorization patterns</li>
-                        <li>Real-world implementation examples with request/response formats and error handling</li>
-                        <li>Advanced topics including HATEOAS, webhooks, batch operations, and idempotency patterns</li>
-                    </ul>
-                </div>
-                <a href="https://restapi.design" class="project-link">Visit Website →</a>
-            </div>
+<div class="tile">
+  <div class="tile-header">
+    <div class="tile-number">1</div>
+    <h3>XP2.org</h3>
+  </div>
+  <p>Markdown-based developer documentation portal built with MkDocs.</p>
+  <ul>
+    <li>REST API references</li>
+    <li>Docs-as-code Git workflow</li>
+    <li>Multi-language examples</li>
+  </ul>
+  <a href="https://xp2.org">Visit →</a>
+</div>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-number">4</div>
-                    <div>
-                        <h3 class="project-title">Q2Q.org - API Response Explorer</h3>
-                    </div>
-                </div>
-                <p class="project-description">
-                    Interactive API testing tool for inspecting and analyzing public API responses. Created 
-                    user-focused documentation for developers to test GET endpoints, examine JSON payloads, 
-                    view HTTP headers, analyze status codes, and measure response performance in real-time.
-                </p>
-                <div class="project-highlights">
-                    <h4>Documentation Highlights</h4>
-                    <ul>
-                        <li>Clear instructional content for API endpoint testing and response inspection</li>
-                        <li>Documentation on JSON formatting, raw response analysis, and header examination</li>
-                        <li>User guides for performance testing and response time measurement</li>
-                        <li>Developer-friendly interface documentation with focus on debugging and API exploration</li>
-                    </ul>
-                </div>
-                <a href="https://q2q.org" class="project-link">Visit Website →</a>
-            </div>
-        </section>
+<div class="tile">
+  <div class="tile-header">
+    <div class="tile-number">2</div>
+    <h3>AUCS.net – Kong Dashboard</h3>
+  </div>
+  <p>API gateway dashboard documentation for Kong Gateway.</p>
+  <ul>
+    <li>Route & service docs</li>
+    <li>API testing workflows</li>
+    <li>Persistence & autosave</li>
+  </ul>
+  <a href="https://aucs.net">Visit →</a>
+</div>
 
-        <footer>
-            <p>Designed by Ashok Kumar | Contact: ashokchandru@gmail.com</p>
-        </footer>
-    </div>
+<div class="tile">
+  <div class="tile-header">
+    <div class="tile-number">3</div>
+    <h3>RestAPI.design</h3>
+  </div>
+  <p>Opinionated REST API design reference.</p>
+  <ul>
+    <li>HTTP & URI standards</li>
+    <li>Security & versioning</li>
+    <li>Advanced REST patterns</li>
+  </ul>
+  <a href="https://restapi.design">Visit →</a>
+</div>
+
+<div class="tile">
+  <div class="tile-header">
+    <div class="tile-number">4</div>
+    <h3>Q2Q.org</h3>
+  </div>
+  <p>Interactive API response explorer.</p>
+  <ul>
+    <li>Live GET testing</li>
+    <li>JSON & header inspection</li>
+    <li>Performance metrics</li>
+  </ul>
+  <a href="https://q2q.org">Visit →</a>
+</div>
+
+<div class="tile">
+  <div class="tile-header">
+    <div class="tile-number">5</div>
+    <h3>GitPush.info</h3>
+  </div>
+  <p>A meta resource for Git workflows, tutorials & real-world examples.</p>
+  <ul>
+    <li>Git command guides</li>
+    <li>Branching strategies</li>
+    <li>Docs-as-code workflows</li>
+  </ul>
+  <a href="https://gitpush.info">Visit →</a>
+</div>
+
+</section>
+
+<footer>
+  Designed by Ashok Kumar · ashokchandru@gmail.com
+</footer>
+
+</div>
 </body>
 </html>
